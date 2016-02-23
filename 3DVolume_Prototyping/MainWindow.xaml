@@ -1,0 +1,45 @@
+﻿<Window x:Class="_3DVolume_Prototyping.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:k="http://schemas.microsoft.com/kinect/2013"
+        Title="MainWindow" Height="515" Width="715"
+        Closing="MainWindow_OnClosing"
+        ResizeMode="CanMinimize"
+        Loaded="MainWindow_OnLoaded">
+    <Grid>
+        <k:KinectSensorChooserUI Name="SensorChooserUi" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <StackPanel Orientation="Horizontal">
+            <Grid>
+                <Image MouseLeftButtonDown="DepthImage_OnMouseLeftButtonUp" Width="640" Height="480" Name="DepthImage" Stretch="Uniform"/>
+                <Polyline Stroke="Blue" Name="ObjectBorders"/>
+            </Grid>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="XMax"/>
+                        <TextBox TextChanged="CoordsTextBox_OnTextChanged" Name="XMax" IsEnabled="False"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text=" XMin"/>
+                        <TextBox TextChanged="CoordsTextBox_OnTextChanged" Name="XMin" IsEnabled="False"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="YMax"/>
+                        <TextBox TextChanged="CoordsTextBox_OnTextChanged" Name="YMax" IsEnabled="False"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text=" YMin"/>
+                        <TextBox TextChanged="CoordsTextBox_OnTextChanged" Name="YMin" IsEnabled="False"/>
+                    </StackPanel>
+                </StackPanel>
+                <Button Click="FirstScanBtn_OnClick" Name="FirstScanBtn" Content="1st Scan"/>
+                <Button IsEnabled="False" Name="SecondScanBtn" Click="SecondScanBtn_OnClick" Content="2nd Scan"/>
+                <Button Click="CalculateBtn_OnClick" Name="CalculateBtn" IsEnabled="False" Content="Calculate"/>
+                <Button Name="ResetBtn" Content="Reset" Click="ResetBtn_OnClick"/>
+                <TextBlock Name="StatusTxt" Width="60" TextAlignment="Center" TextWrapping="Wrap" Text="Press 1st Scan Button to start."/> 
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
